@@ -1,0 +1,35 @@
+apply plugin: 'cpp'
+
+model {
+    components {
+        main(NativeExecutableSpec) {
+            sources {   
+                cpp {
+                    source {
+                        srcDir "src"
+                    }
+                }
+            }   
+        }
+    }
+
+    binaries {
+        all {
+            
+            if (toolChain in Gcc) {
+                cppCompiler.args "-I/usr/include/SDL2/", "-I/usr/include"
+				linker.args "-lSDL2main", "-lSDL2", "-lSDL2_image","-ltinyxml2"
+            }
+        }
+    }
+
+}
+    task copyAssets {
+        copy {
+            from "."
+            into "build/exe/main"
+            include "images/**" // This will take the whole images folder from project root
+        }
+    }
+
+build.dependsOn copyAssets
