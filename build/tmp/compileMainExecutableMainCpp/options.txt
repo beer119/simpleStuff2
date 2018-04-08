@@ -1,0 +1,8 @@
+-x
+c++
+-c
+-I/usr/include/SDL2/
+-I/usr/include
+-I
+/home/beer/simpleStuff2/src/main/headers
+-m64

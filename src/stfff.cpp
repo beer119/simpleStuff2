@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "InputHandler.h"
+using namespace std;
 int main(int argc, char* argv[])
 {
 	const int FPS = 60;
@@ -8,7 +9,7 @@ int main(int argc, char* argv[])
 	Game::Instance()->init("Chapter 5", 100, 100, 640, 650, SDL_WINDOW_MAXIMIZED);
 	while(Game::Instance()->running())
 	{
-
+		cout<<"running"<<endl;
 		frameStart = SDL_GetTicks();
 		TheInputHandler::Instance()->update();
 		Game::Instance()->handleEvents2();

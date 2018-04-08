@@ -14,13 +14,14 @@ class AnimatedGraphic : public SDLGameObject // inherit from GameObject
 {
 public:
 
-	AnimatedGraphic(const LoaderParams* pParams,int  m_animSpeed);
+	AnimatedGraphic();
 
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
 	int m_animSpeed;
 	int m_numFrames;
+	void load(const LoaderParams *pParams);
 
 };
 

@@ -8,15 +8,17 @@
 
 
 
-#include "MenuState.h"
+#include "MainMenuState.h"
 #include <iostream>
 #include "PlayState.h"
 #include "../GameObject/Player.h"
 #include "../GameObject/Enemy.h"
 #include "../InputHandler.h"
+#include "../XML/StateParser.h"
 #include "../Game.h"
 #include "PauseState.h"
 #include "GameOverState.h"
+#include "../TextureManager.h"
 const std::string PlayState::s_playID = "PLAY";
 void PlayState::update()
 {
@@ -47,16 +49,21 @@ void PlayState::render()
 }
 bool PlayState::onEnter()
 {
-	GameObject* p=new Player();
+/*	GameObject* p=new Player();
 	p->load(new LoaderParams(100, 100, 128, 82,"fishbaddie_parts"));
 	m_gameObjects.push_back(p);
 	GameObject* e=new Enemy();
 	e->load(new LoaderParams(300, 300, 128, 82,"fishbaddie_parts"));
 	m_gameObjects.push_back(e);
 
+*/
+	// parse the state
+	StateParser stateParser;
+	stateParser.parseState("setupfiles/test.xml", s_playID, &m_gameObjects,
+	&m_textureIDList);
 
-std::cout << "entering PlayState\n";
-return true;
+	std::cout << "entering PlayState\n";
+	return true;
 }
 bool PlayState::onExit()
 {
@@ -65,6 +72,11 @@ bool PlayState::onExit()
 			m_gameObjects[i]->clean();
 	}
 	m_gameObjects.clear();
+	for(int i = 0; i < m_textureIDList.size(); i++)
+	{
+		TextureManager::getInstance()->clearFromTextureMap(m_textureIDList[i]);
+	}
+
 
 std::cout << "exiting PlayState\n";
 return true;

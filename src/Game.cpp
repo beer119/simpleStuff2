@@ -3,22 +3,45 @@
 #include <SDL_image.h>
 #include <iostream>
 #include "GameObject/Enemy.h"
+#include "GameObject/MenuButton.h"
 #include "InputHandler.h"
-#include "States/MenuState.h"
+#include "States/MainMenuState.h"
 #include "States/PlayState.h"
 #include "TextureManager.h"
+#include "XML/MenuButtonCreator.h"
+#include "XML/PlayerCreator.h"
+#include "XML/EnemyCreator.h"
+#include "XML/AnimatedGraphicCreator.h"
+
 using namespace std;
 Game* Game::s_pInstance = 0;
 
+Game::Game()
+{
+
+	GameObjectFactory::Instance()->registerType("MenuButton", new MenuButtonCreator());
+	GameObjectFactory::Instance()->registerType("Player", new PlayerCreator());
+
+	GameObjectFactory::Instance()->registerType("Enemy",new EnemyCreator());
+
+	GameObjectFactory::Instance()->registerType("AnimatedGraphic",new AnimatedGraphicCreator());
+
+
+	m_bRunning=false;
+	m_pRenderer=nullptr;
+	m_pWindow=nullptr;
+	m_pGameStateMachine=nullptr;
+	m_currentFrame=0;
+}
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, int flags)
 {
 	// attempt to initialize SDL
 	if(SDL_Init(SDL_INIT_EVERYTHING) == 0)
 	{
-	std::cout << "SDL init success5\n";
+	std::cout << "SDL init success\n";
 
 	m_pWindow = SDL_CreateWindow(title, xpos, ypos,width, height, flags);
-	std::cout << "m_pWindow\n";
+
 	if(m_pWindow != 0) // window init success
 	{
 	std::cout << "window creation success\n";
@@ -46,7 +69,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
 	std::cout << "SDL init fail\n";
 	return false; // SDL init fail
 	}
-	std::cout << "init successqq33\n";
+	std::cout << "init success\n";
 	m_bRunning = true; // everything inited successfully,	start the main loop
 
 	TextureManager::getInstance()->load("images/spritelib_gpl/fishdish/fishbaddie_parts.png","fishbaddie_parts",m_pRenderer);
@@ -54,7 +77,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
 
 
 	m_pGameStateMachine = new GameStateMachine();
-	m_pGameStateMachine->changeState(new MenuState());
+	m_pGameStateMachine->changeState(new MainMenuState());
 
 
 	return true;

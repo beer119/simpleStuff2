@@ -1,0 +1,80 @@
+See file:///home/beer/simpleStuff2/build/tmp/compileMainExecutableMainCpp/output.txt for all output for compileMainExecutableMainCpp.
+compiling GameState.h successful.
+
+compiling GameStateMachine.h successful.
+
+compiling MenuState.h successful.
+
+compiling GameStateMachine.cpp successful.
+
+compiling GameOverState.cpp successful.
+
+compiling MenuState.cpp successful.
+
+compiling PlayState.cpp successful.
+
+compiling PlayState.h successful.
+
+compiling GameOverState.h successful.
+
+compiling LoaderParams.h successful.
+
+compiling PauseState.cpp successful.
+
+compiling PauseState.h successful.
+
+compiling TextureManager.cpp successful.
+
+compiling stfff.cpp successful.
+
+compiling AnimatedGraphic.h successful.
+
+compiling AnimatedGraphic.cpp successful.
+
+compiling MenuButton.cpp successful.
+
+compiling SDLGameObject.h successful.
+
+compiling Enemy.cpp successful.
+
+compiling Player.h successful.
+
+compiling PlayerCreator.h successful.
+
+compiling Player.cpp successful.
+
+compiling Vector2D.h successful.
+
+compiling InputHandler.h successful.
+
+compiling Enemy.h successful.
+
+compiling MenuButton.h successful.
+
+compiling LoaderParams.cpp successful.
+
+compiling GameObject.h successful.
+
+compiling Game.h successful.
+
+compiling SDLGameObject.cpp successful.
+
+compiling TextureManager.h successful.
+
+compiling Game.cpp successful.
+
+compiling InputHandler.cpp successful.
+
+compiling BaseCreator.h successful.
+
+compiling GameObjectFactory.cpp successful.
+
+compiling GameObjectFactory.h successful.
+
+compiling StateParser.h successful.
+
+compiling StateParser.cpp successful.
+
+compiling PlayerCreator.h successful.
+
+Finished compileMainExecutableMainCpp, see full log file:///home/beer/simpleStuff2/build/tmp/compileMainExecutableMainCpp/output.txt.

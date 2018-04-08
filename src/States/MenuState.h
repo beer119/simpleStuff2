@@ -1,34 +1,23 @@
 /*
  * MenuState.h
  *
- *  Created on: Jan 17, 2018
+ *  Created on: Mar 31, 2018
  *      Author: beer
  */
 
-#ifndef MENUSTATE_H_
-#define MENUSTATE_H_
-
-
+#ifndef STATES_MENUSTATE_H_
+#define STATES_MENUSTATE_H_
 #include "GameState.h"
-#include "../GameObject/GameObject.h"
 #include <vector>
 class MenuState : public GameState
 {
+protected:
+typedef void(*Callback)();
+virtual void setCallbacks(const std::vector<Callback>& callbacks)= 0;
+std::vector<Callback> m_callbacks;
+virtual ~MenuState()
+{
 
-public:
-virtual void update();
-virtual void render();
-virtual bool onEnter();
-virtual bool onExit();
-virtual std::string getStateID() const { return s_menuID; }
-private:
-std::vector<GameObject*> m_gameObjects;
-private:
-static void s_menuToPlay();
-static void s_exitFromMenu();
-
-static const std::string s_menuID;
+}
 };
-
-
-#endif /* MENUSTATE_H_ */
+#endif /* STATES_MENUSTATE_H_ */

@@ -5,6 +5,7 @@
 #include "GameObject/GameObject.h"
 #include <vector>
 #include "States/GameStateMachine.h"
+#include "XML/GameObjectFactory.h"
 //#include "TextureManager.h"
 class Game
 {
@@ -23,10 +24,7 @@ SDL_Window* m_pWindow;
 SDL_Renderer* m_pRenderer;
 int m_currentFrame;
 private:
-Game()
-{
-	m_bRunning=false;
-}
+Game();
 // create the s_pInstance member variable
 static Game* s_pInstance;
 
