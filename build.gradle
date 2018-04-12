@@ -29,6 +29,7 @@ model {
             from "."
             into "build/exe/main"
             include "images/**" // This will take the whole images folder from project root
+            include "setupfiles/**" // This will take the whole images folder from project root
         }
     }
 
