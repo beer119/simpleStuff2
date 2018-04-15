@@ -6,7 +6,7 @@ int main(int argc, char* argv[])
 	const int FPS = 60;
 	const int DELAY_TIME = 1000.0f / FPS;
 	Uint32 frameStart, frameTime;
-	Game::Instance()->init("Chapter 5", 100, 100, 640, 650, SDL_WINDOW_MAXIMIZED);
+	Game::Instance()->init("Chapter 5", 100, 100, 640, 640, SDL_WINDOW_MAXIMIZED);
 	while(Game::Instance()->running())
 	{
 		cout<<"running"<<endl;

@@ -11,9 +11,11 @@
 #include <vector>
 #include "GameState.h"
 #include "../GameObject/SDLGameObject.h"
+#include "../levels/level.h"
 class PlayState : public GameState
 {
 public:
+	Level * pLevel;
 virtual void update();
 virtual void render();
 virtual bool onEnter();

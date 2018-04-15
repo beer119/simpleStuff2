@@ -5,7 +5,7 @@
 #include "../TextureManager.h"
 void Enemy::update()
 	{
-	//	std::cout<<"update Enemy object"<<std::endl;
+
 	m_position.setX(m_position.getX()+m_velocity.getX());
 	m_position.setY(m_position.getY()+m_velocity.getY());
 	if(TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_D))

@@ -5,10 +5,6 @@
 #include "../TextureManager.h"
 void Player::update()
 	{
-		//std::cout<<"update player object"<<std::endl;
-
-		//m_velocity.setX(0);
-		//m_velocity.setY(0);
 
 		handleInput();
 		m_position.setX(m_position.getX()+m_velocity.getX());
@@ -34,10 +30,6 @@ void Player::handleInput()
 	m_velocity = *target - m_position;
 	m_velocity /= 50;
 
-	/*Vector2D* vec = TheInputHandler::Instance()->getMousePosition();
-	if(vec->getX())
-	{
-		m_velocity = (*vec - m_position) / 100;
-	}*/
+
 
 }

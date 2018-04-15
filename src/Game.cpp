@@ -35,6 +35,8 @@ Game::Game()
 }
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, int flags)
 {
+	m_gameHeight=height;
+	m_gameWidth=width;
 	// attempt to initialize SDL
 	if(SDL_Init(SDL_INIT_EVERYTHING) == 0)
 	{
@@ -74,7 +76,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
 
 	TextureManager::getInstance()->load("images/spritelib_gpl/fishdish/fishbaddie_parts.png","fishbaddie_parts",m_pRenderer);
 
-
+	TextureManager::getInstance()->load("images/blocks1.png","blocks1",m_pRenderer);
 
 	m_pGameStateMachine = new GameStateMachine();
 	m_pGameStateMachine->changeState(new MainMenuState());

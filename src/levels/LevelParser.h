@@ -13,18 +13,20 @@
 using namespace tinyxml2;
 class LevelParser
 {
-	public:
+public:
 	Level* parseLevel(const char* levelFile);
-	private:
+	void parseTextures(XMLElement* pTextureRoot);
+	void parseObjectLayer(XMLElement* pObjectElement,std::vector<Layer*> *pLayers);
+
+
+private:
 	void parseTilesets(XMLElement* pTilesetRoot,
 	std::vector<Tileset>* pTilesets);
-	void parseTileLayer(XMLElement* pTileElement,
-	std::vector<Layer*> *pLayers, const std::vector<Tileset>*
-	pTilesets);
+	void parseTileLayer(XMLElement* pTileElement,std::vector<Layer*> *pLayers, const std::vector<Tileset>*	pTilesets);
 
-	intintintm_tileSize;
-	m_width;
-	m_height;
+	int m_tileSize;
+	int m_width;
+	int m_height;
 
 };
 

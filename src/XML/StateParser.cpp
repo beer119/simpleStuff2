@@ -15,7 +15,7 @@
 
 bool StateParser::parseState(const char* stateFile, string stateID, vector<GameObject *> *pObjects, vector<std::string> *pTextureIDs)
 {
-	XMLDocument doc;
+
 
 	// create the XML document
 	XMLDocument xmlDoc;
@@ -54,7 +54,7 @@ bool StateParser::parseState(const char* stateFile, string stateID, vector<GameO
 		}
 	}
 	// pre declare the texture root
-	XMLElement* pTextureRoot = 0;
+	XMLElement* pTextureRoot = nullptr;
 	// get the root of the texture elements
 	for(XMLElement* e = pStateRoot->FirstChildElement(); e != NULL; e = e->NextSiblingElement())
 	{
@@ -64,6 +64,7 @@ bool StateParser::parseState(const char* stateFile, string stateID, vector<GameO
 		}
 	}
 	// now parse the textures
+	if(pTextureRoot!=nullptr)
 	parseTextures(pTextureRoot, pTextureIDs);
 	// pre declare the object root node
 	XMLElement* pObjectRoot = 0;

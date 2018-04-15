@@ -19,9 +19,12 @@
 #include "PauseState.h"
 #include "GameOverState.h"
 #include "../TextureManager.h"
+#include "../levels/LevelParser.h"
 const std::string PlayState::s_playID = "PLAY";
 void PlayState::update()
 {
+	pLevel->update();
+
 	for(int i = 0; i < m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->update();
@@ -41,10 +44,12 @@ void PlayState::update()
 }
 void PlayState::render()
 {
-	for(int i = 0; i < m_gameObjects.size(); i++)
+	/*for(int i = 0; i < m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->draw();
-	}
+	}*/
+	pLevel->render();
+
 
 }
 bool PlayState::onEnter()
@@ -61,6 +66,8 @@ bool PlayState::onEnter()
 	StateParser stateParser;
 	stateParser.parseState("setupfiles/test.xml", s_playID, &m_gameObjects,
 	&m_textureIDList);
+	LevelParser levelParser;
+	pLevel = levelParser.parseLevel("setupfiles/map2.tmx");
 
 	std::cout << "entering PlayState\n";
 	return true;
@@ -82,33 +89,42 @@ std::cout << "exiting PlayState\n";
 return true;
 }
 
-bool PlayState::checkCollision(SDLGameObject* p1, SDLGameObject*
-p2)
+bool PlayState::checkCollision(SDLGameObject* p1, SDLGameObject* p2)
 {
-int leftA, leftB;
-int rightA, rightB;
-int topA, topB;
-int bottomA, bottomB;
-leftA = p1->getPosition().getX();
-rightA = p1->getPosition().getX() + p1->getWidth();
-topA = p1->getPosition().getY();
-bottomA = p1->getPosition().getY() + p1->getHeight();
-//std::cout<<leftA<<" "<<rightA<<" "<<topA<< " "<<bottomA<<std::endl;
-//Calculate the sides of rect B
-leftB = p2->getPosition().getX();
-rightB = p2->getPosition().getX() + p2->getWidth();
-topB = p2->getPosition().getY();
-bottomB = p2->getPosition().getY() + p2->getHeight();
-//std::cout<<leftB<<" "<<rightB<<" "<<topB<< " "<<bottomB<<std::endl;
-//If any of the sides from A are outside of B
-if( bottomA <= topB ){
-	return false;}
-if( topA >= bottomB ){
-	return false; }
-if( rightA <= leftB ){
-	return false; }
-if( leftA >= rightB ){
-	return false;}
-return true;
+	int leftA, leftB;
+	int rightA, rightB;
+	int topA, topB;
+	int bottomA, bottomB;
+	leftA = p1->getPosition().getX();
+	rightA = p1->getPosition().getX() + p1->getWidth();
+	topA = p1->getPosition().getY();
+	bottomA = p1->getPosition().getY() + p1->getHeight();
+	//std::cout<<leftA<<" "<<rightA<<" "<<topA<< " "<<bottomA<<std::endl;
+	//Calculate the sides of rect B
+	leftB = p2->getPosition().getX();
+	rightB = p2->getPosition().getX() + p2->getWidth();
+	topB = p2->getPosition().getY();
+	bottomB = p2->getPosition().getY() + p2->getHeight();
+	//std::cout<<leftB<<" "<<rightB<<" "<<topB<< " "<<bottomB<<std::endl;
+	//If any of the sides from A are outside of B
+	cout <<"bottomA: "<<bottomA<<endl;
+	cout <<"topB: "<<topB<<endl;
+
+	cout <<"bottomB: "<<bottomB<<endl;
+	cout <<"topA: "<<topA<<endl;
+
+	cout <<"rightA: "<<rightA<<endl;
+	cout <<"leftB: "<<leftB<<endl;
+	cout <<"leftA: "<<leftA<<endl;
+	cout <<"rightB: "<<rightB<<endl;
+	if( bottomA <= topB ){
+		return false;}
+	if( topA >= bottomB ){
+		return false; }
+	if( rightA <= leftB ){
+		return false; }
+	if( leftA >= rightB ){
+		return false;}
+	return true;
 }
 

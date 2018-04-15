@@ -7,7 +7,9 @@
 
 
 #include "level.h"
-
+Level::Level()
+{
+}
 void Level::render()
 {
 	for(int i = 0; i < m_layers.size(); i++)

@@ -49,28 +49,10 @@ void MainMenuState::render()
 }
 bool MainMenuState::onEnter()
 {
-	/*bool loaded =TextureManager::getInstance()->load("images/spritelib_gpl/fishdish/fishbaddie_parts.png","fishbaddie_parts1",TheGame::Instance()->getRenderer());
 
-	if(!loaded)
-	{
-	return false;
-	}
-	loaded =TextureManager::getInstance()->load("images/spritelib_gpl/fishdish/fishbaddie_parts.png","fishbaddie_parts2",TheGame::Instance()->getRenderer());
-	if(!loaded)
-	{
-		return false;
-	}
-	GameObject* button1 = new MenuButton(s_menuToPlay);
-	button1->load(new LoaderParams(100, 100,	400, 100, "fishbaddie_parts1"));
-	GameObject* button2 = new MenuButton(s_exitFromMenu);
-	button2->load(new LoaderParams(100, 300,	400, 100, "fishbaddie_parts1"));
-
-	m_gameObjects.push_back(button1);
-	m_gameObjects.push_back(button2);
-*/
 	std::cout << "entering MenuState\n";
 	// clear the texture manager
-//	cout<<m_textureIDList.size()<< " size";
+
 	std::cout << "entering MenuState2\n";
 	for(int i = 0; i < m_textureIDList.size(); i++)
 	{

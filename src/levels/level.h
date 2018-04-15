@@ -27,7 +27,7 @@ struct Tileset
 class Level
 {
 public:
-	Level();
+
 	~Level(){}
 	void update();
 	void render();
@@ -43,6 +43,8 @@ private:
 	{
 		return &m_layers;
 	}
+	friend class LevelParser;
+	Level();
 
 
 };

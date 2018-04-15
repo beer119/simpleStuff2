@@ -19,10 +19,22 @@ void handleEvents2();
 void clean();
 // a function to access the private running variable
 bool running() { return m_bRunning; }
+int getGameWidth() const
+{
+	return m_gameWidth;
+}
+int getGameHeight() const
+{
+	return m_gameHeight;
+}
 private:
 SDL_Window* m_pWindow;
 SDL_Renderer* m_pRenderer;
 int m_currentFrame;
+int m_gameWidth;
+int m_gameHeight;
+
+
 private:
 Game();
 // create the s_pInstance member variable
